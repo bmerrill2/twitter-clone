@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  
+  jQuery("abbr.timeago").timeago();
+  jQuery.timeago.settings.allowFuture = true;
 
   $('.tweet-compose').on('click', function(){
     $('#tweet-submit').removeClass('hidden');
@@ -27,7 +30,7 @@ $(document).ready(function(){
   $('#tweet-submit').on('click', function(){
   
     var tweetMessage = $('#tweet-content').find('.tweet-compose').val();
-
+   
     $('#stream').prepend(
       
       '<div class="tweet">'
@@ -64,7 +67,7 @@ $(document).ready(function(){
                         + '</div>'
 
                         + '<div class="time">'
-                            + '1:04 PM - 19 Sep 13'
+                            + jQuery.timeago(new Date())
                         + '</div>'
                     + '</div>'
                     + '<div class="reply">'
@@ -86,7 +89,7 @@ $(document).ready(function(){
   
   $('.stats').css('display', 'none');
   $('.tweet').on('click' , function(){
-    $(this).find('.stats').css('display', 'inline-block');                             
+    $(this).find('.stats').slideDown("slow").css('display', 'inline-block')                             
   })
   
     
